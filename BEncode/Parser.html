@@ -1,0 +1,692 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta name="Content-Type" content="text/html; charset=UTF-8" />
+<title>Module: BEncode::Parser</title>
+<link rel="stylesheet" href="../css/style.css" type="text/css" media="screen" charset="utf-8" />
+<link rel="stylesheet" href="../css/common.css" type="text/css" media="screen" charset="utf-8" />
+
+<script type="text/javascript" charset="utf-8">
+  relpath = '..';
+  if (relpath != '') relpath += '/';
+</script>
+<script type="text/javascript" charset="utf-8" src="../js/jquery.js"></script>
+<script type="text/javascript" charset="utf-8" src="../js/app.js"></script>
+
+  </head>
+  <body>
+    <script type="text/javascript" charset="utf-8">
+      if (window.top.frames.main) document.body.className = 'frames';
+    </script>
+    
+    <div id="header">
+      <div id="menu">
+  
+    <a href="../_index.html">Index (P)</a> &raquo; 
+    <span class='title'><a href="../BEncode.html" title="BEncode (module)">BEncode</a></span>
+     &raquo; 
+    <span class="title">Parser</span>
+  
+  
+  <div class="noframes"><span class="title">(</span><a href="." target="_top">no frames</a><span class="title">)</span></div>
+</div>
+
+      <div id="search">
+  <a id="class_list_link" href="#">Class List</a>
+  <a id="method_list_link" href="#">Method List</a>
+  <a id ="file_list_link" href="#">File List</a>
+</div>
+
+      <div class="clear"></div>
+    </div>
+    
+    <iframe id="search_frame"></iframe>
+    
+    <div id="content"><h1>Module: BEncode::Parser 
+  
+  
+</h1>
+
+<dl class="box">
+  
+  
+    
+  
+    
+  
+  
+    <dt class="r1 last">Defined in:</dt>
+    <dd class="r1 last">lib/bencode/parser.rb</dd>
+  
+</dl>
+<div class="clear"></div>
+
+
+
+
+  <h2>Class Method Summary</h2>
+
+  <ul class="summary">
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#parse_dictionary-class_method" title="parse_dictionary (class method)">+ (Hash) <strong>parse_dictionary</strong>(scanner) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc">
+This method parases a bencoded dictionary.
+
+</span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#parse_integer-class_method" title="parse_integer (class method)">+ (Integer) <strong>parse_integer</strong>(scanner) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc">
+This method parases a bencoded integer.
+
+</span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#parse_list-class_method" title="parse_list (class method)">+ (Array) <strong>parse_list</strong>(scanner) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc">
+This method parases a bencoded list.
+
+</span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#parse_object-class_method" title="parse_object (class method)">+ (String, ...) <strong>parse_object</strong>(scanner) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc">
+This method parases a bencoded object.
+
+</span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#parse_string-class_method" title="parse_string (class method)">+ (String) <strong>parse_string</strong>(scanner) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc">
+This method parases a bencoded string.
+
+</span>
+  
+</li>
+
+    
+  </ul>
+
+
+  <div id="class_method_details" class="method_details_list">
+    <h2>Class Method Details</h2>
+    
+    
+      <div class="method_details first">
+  <p class="signature first" id="parse_dictionary-class_method">
+  
+    + (<tt>Hash</tt>) <strong>parse_dictionary</strong>(scanner) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+This method parases a bencoded dictionary.
+</p>
+<pre class="code">
+  <span class='id scanner'>scanner</span> <span class='op'>=</span> <span class='const'>StringScanner</span><span class='period'>.</span><span class='id new'>new</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>de</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+  <span class='const'>BEncode</span><span class='op'>::</span><span class='const'>Parser</span><span class='period'>.</span><span class='id parse_dictionary'>parse_dictionary</span><span class='lparen'>(</span><span class='id scanner'>scanner</span><span class='rparen'>)</span> <span class='comment'>#=&gt; {}
+</span></pre>
+
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Parameters:</h3>
+<ul class="param">
+  
+    <li>
+      
+        <span class='type'>(<tt>StringScanner</tt>)</span>
+      
+      
+        <span class='name'>scanner</span>
+      
+      
+      
+        &mdash;
+        
+the scanner of a bencoded dictionary
+
+
+      
+    </li>
+  
+</ul>
+<h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+        <span class='type'>(<tt>Hash</tt>)</span>
+      
+      
+      
+      
+        &mdash;
+        
+the parsed hash
+
+
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/bencode/parser.rb', line 85</span>
+
+<span class='kw'>def</span> <span class='id parse_dictionary'>parse_dictionary</span><span class='lparen'>(</span><span class='id scanner'>scanner</span><span class='rparen'>)</span>
+  <span class='id dictionary'>dictionary</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span>
+
+  <span class='id scanner'>scanner</span><span class='period'>.</span><span class='id scan'>scan</span><span class='lparen'>(</span><span class='tstring'><span class='regexp_beg'>/</span><span class='tstring_content'>d</span><span class='regexp_end'>/</span></span><span class='rparen'>)</span> <span class='kw'>or</span> <span class='id raise'>raise</span> <span class='const'>BEncodeError</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Invalid dictionary: missing opening d. </span><span class='embexpr_beg'>#{</span><span class='id scanner'>scanner</span><span class='period'>.</span><span class='id pos'>pos</span><span class='rbrace'>}</span><span class='tstring_end'>&quot;</span></span>
+  <span class='kw'>while</span> <span class='kw'>true</span>
+    <span class='id key_value'>key_value</span> <span class='op'>=</span> <span class='id parse_key_value'>parse_key_value</span><span class='lparen'>(</span><span class='id scanner'>scanner</span><span class='rparen'>)</span>
+    <span class='kw'>break</span> <span class='kw'>unless</span> <span class='id key_value'>key_value</span>
+    <span class='id dictionary'>dictionary</span><span class='period'>.</span><span class='id store'>store</span><span class='lparen'>(</span><span class='op'>*</span><span class='id key_value'>key_value</span><span class='rparen'>)</span>
+  <span class='kw'>end</span>
+  <span class='id scanner'>scanner</span><span class='period'>.</span><span class='id scan'>scan</span><span class='lparen'>(</span><span class='tstring'><span class='regexp_beg'>/</span><span class='tstring_content'>e</span><span class='regexp_end'>/</span></span><span class='rparen'>)</span> <span class='kw'>or</span> <span class='id raise'>raise</span> <span class='const'>BEncodeError</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Invalid dictionary: missing closing e. </span><span class='embexpr_beg'>#{</span><span class='id scanner'>scanner</span><span class='period'>.</span><span class='id pos'>pos</span><span class='rbrace'>}</span><span class='tstring_end'>&quot;</span></span>
+
+  <span class='id dictionary'>dictionary</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="parse_integer-class_method">
+  
+    + (<tt><a href="Integer.html" title="BEncode::Integer (module)">Integer</a></tt>) <strong>parse_integer</strong>(scanner) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+This method parases a bencoded integer.
+</p>
+<pre class="code">
+  <span class='id scanner'>scanner</span> <span class='op'>=</span> <span class='const'>StringScanner</span><span class='period'>.</span><span class='id new'>new</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>i1e</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+  <span class='const'>BEncode</span><span class='op'>::</span><span class='const'>Parser</span><span class='period'>.</span><span class='id parse_integer'>parse_integer</span><span class='lparen'>(</span><span class='id scanner'>scanner</span><span class='rparen'>)</span> <span class='comment'>#=&gt; 1
+</span></pre>
+
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Parameters:</h3>
+<ul class="param">
+  
+    <li>
+      
+        <span class='type'>(<tt>StringScanner</tt>)</span>
+      
+      
+        <span class='name'>scanner</span>
+      
+      
+      
+        &mdash;
+        
+the scanner of a bencoded integer
+
+
+      
+    </li>
+  
+</ul>
+<h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+        <span class='type'>(<tt><a href="Integer.html" title="BEncode::Integer (module)">Integer</a></tt>)</span>
+      
+      
+      
+      
+        &mdash;
+        
+the parsed integer
+
+
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+50
+51
+52
+53
+54
+55</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/bencode/parser.rb', line 50</span>
+
+<span class='kw'>def</span> <span class='id parse_integer'>parse_integer</span><span class='lparen'>(</span><span class='id scanner'>scanner</span><span class='rparen'>)</span>
+  <span class='id scanner'>scanner</span><span class='period'>.</span><span class='id scan'>scan</span><span class='lparen'>(</span><span class='tstring'><span class='regexp_beg'>/</span><span class='tstring_content'>i</span><span class='regexp_end'>/</span></span><span class='rparen'>)</span>                         <span class='kw'>or</span> <span class='id raise'>raise</span> <span class='const'>BEncodeError</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Invalid integer: missing opening i. </span><span class='embexpr_beg'>#{</span><span class='id scanner'>scanner</span><span class='period'>.</span><span class='id pos'>pos</span><span class='rbrace'>}</span><span class='tstring_end'>&quot;</span></span>
+  <span class='id integer'>integer</span> <span class='op'>=</span> <span class='id scanner'>scanner</span><span class='period'>.</span><span class='id scan'>scan</span><span class='lparen'>(</span><span class='tstring'><span class='regexp_beg'>/</span><span class='tstring_content'>-?[1-9][0-9]*|0</span><span class='regexp_end'>/</span></span><span class='rparen'>)</span> <span class='kw'>or</span> <span class='id raise'>raise</span> <span class='const'>BEncodeError</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Invalid integer: valid integer not found. </span><span class='embexpr_beg'>#{</span><span class='id scanner'>scanner</span><span class='period'>.</span><span class='id pos'>pos</span><span class='rbrace'>}</span><span class='tstring_end'>&quot;</span></span>
+  <span class='id scanner'>scanner</span><span class='period'>.</span><span class='id scan'>scan</span><span class='lparen'>(</span><span class='tstring'><span class='regexp_beg'>/</span><span class='tstring_content'>e</span><span class='regexp_end'>/</span></span><span class='rparen'>)</span>                         <span class='kw'>or</span> <span class='id raise'>raise</span> <span class='const'>BEncodeError</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Invalid integer: missing closing e. </span><span class='embexpr_beg'>#{</span><span class='id scanner'>scanner</span><span class='period'>.</span><span class='id pos'>pos</span><span class='rbrace'>}</span><span class='tstring_end'>&quot;</span></span>
+  <span class='id integer'>integer</span><span class='period'>.</span><span class='id to_i'>to_i</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="parse_list-class_method">
+  
+    + (<tt>Array</tt>) <strong>parse_list</strong>(scanner) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+This method parases a bencoded list.
+</p>
+<pre class="code">
+  <span class='id scanner'>scanner</span> <span class='op'>=</span> <span class='const'>StringScanner</span><span class='period'>.</span><span class='id new'>new</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>le</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+  <span class='const'>BEncode</span><span class='op'>::</span><span class='const'>Parser</span><span class='period'>.</span><span class='id parse_list'>parse_list</span><span class='lparen'>(</span><span class='id scanner'>scanner</span><span class='rparen'>)</span> <span class='comment'>#=&gt; []
+</span></pre>
+
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Parameters:</h3>
+<ul class="param">
+  
+    <li>
+      
+        <span class='type'>(<tt>StringScanner</tt>)</span>
+      
+      
+        <span class='name'>scanner</span>
+      
+      
+      
+        &mdash;
+        
+the scanner of a bencoded list
+
+
+      
+    </li>
+  
+</ul>
+<h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+        <span class='type'>(<tt>Array</tt>)</span>
+      
+      
+      
+      
+        &mdash;
+        
+the parsed array
+
+
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/bencode/parser.rb', line 64</span>
+
+<span class='kw'>def</span> <span class='id parse_list'>parse_list</span><span class='lparen'>(</span><span class='id scanner'>scanner</span><span class='rparen'>)</span>
+  <span class='id list'>list</span> <span class='op'>=</span> <span class='lbracket'>[</span><span class='rbracket'>]</span>
+
+  <span class='id scanner'>scanner</span><span class='period'>.</span><span class='id scan'>scan</span><span class='lparen'>(</span><span class='tstring'><span class='regexp_beg'>/</span><span class='tstring_content'>l</span><span class='regexp_end'>/</span></span><span class='rparen'>)</span> <span class='kw'>or</span> <span class='id raise'>raise</span> <span class='const'>BEncodeError</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Invalid list: missing opening l. </span><span class='embexpr_beg'>#{</span><span class='id scanner'>scanner</span><span class='period'>.</span><span class='id pos'>pos</span><span class='rbrace'>}</span><span class='tstring_end'>&quot;</span></span>
+  <span class='kw'>while</span> <span class='kw'>true</span>
+    <span class='id object'>object</span> <span class='op'>=</span> <span class='id parse_object'>parse_object</span><span class='lparen'>(</span><span class='id scanner'>scanner</span><span class='rparen'>)</span>
+    <span class='kw'>break</span> <span class='kw'>unless</span> <span class='id object'>object</span>
+    <span class='id list'>list</span> <span class='op'>&lt;&lt;</span> <span class='id object'>object</span>
+  <span class='kw'>end</span>
+  <span class='id scanner'>scanner</span><span class='period'>.</span><span class='id scan'>scan</span><span class='lparen'>(</span><span class='tstring'><span class='regexp_beg'>/</span><span class='tstring_content'>e</span><span class='regexp_end'>/</span></span><span class='rparen'>)</span> <span class='kw'>or</span> <span class='id raise'>raise</span> <span class='const'>BEncodeError</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Invalid list: missing closing e. </span><span class='embexpr_beg'>#{</span><span class='id scanner'>scanner</span><span class='period'>.</span><span class='id pos'>pos</span><span class='rbrace'>}</span><span class='tstring_end'>&quot;</span></span>
+
+  <span class='id list'>list</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="parse_object-class_method">
+  
+    + (<tt><a href="String.html" title="BEncode::String (module)">String</a></tt>, ...) <strong>parse_object</strong>(scanner) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+This method parases a bencoded object.
+</p>
+<pre class="code">
+  <span class='id scanner'>scanner</span> <span class='op'>=</span> <span class='const'>StringScanner</span><span class='period'>.</span><span class='id new'>new</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>6:string</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+  <span class='const'>BEncode</span><span class='op'>::</span><span class='const'>Parser</span><span class='period'>.</span><span class='id parse_object'>parse_object</span><span class='lparen'>(</span><span class='id scanner'>scanner</span><span class='rparen'>)</span> <span class='comment'>#=&gt; &quot;string&quot;
+</span></pre>
+
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Parameters:</h3>
+<ul class="param">
+  
+    <li>
+      
+        <span class='type'>(<tt>StringScanner</tt>)</span>
+      
+      
+        <span class='name'>scanner</span>
+      
+      
+      
+        &mdash;
+        
+the scanner of a bencoded object
+
+
+      
+    </li>
+  
+</ul>
+<h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+        <span class='type'>(<tt><a href="String.html" title="BEncode::String (module)">String</a></tt>, <tt><a href="Integer.html" title="BEncode::Integer (module)">Integer</a></tt>, <tt>Hash</tt>, <tt>Array</tt>, <tt>nil</tt>)</span>
+      
+      
+      
+      
+        &mdash;
+        
+an object if type is recognized or nil
+
+
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/bencode/parser.rb', line 15</span>
+
+<span class='kw'>def</span> <span class='id parse_object'>parse_object</span><span class='lparen'>(</span><span class='id scanner'>scanner</span><span class='rparen'>)</span>
+  <span class='kw'>case</span> <span class='id scanner'>scanner</span><span class='period'>.</span><span class='id peek'>peek</span><span class='lparen'>(</span><span class='int'>1</span><span class='rparen'>)</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span>
+    <span class='kw'>when</span> <span class='CHAR'>?0</span><span class='op'>..</span><span class='CHAR'>?9</span>
+      <span class='id parse_string'>parse_string</span><span class='lparen'>(</span><span class='id scanner'>scanner</span><span class='rparen'>)</span>
+    <span class='kw'>when</span> <span class='CHAR'>?i</span>
+      <span class='id parse_integer'>parse_integer</span><span class='lparen'>(</span><span class='id scanner'>scanner</span><span class='rparen'>)</span>
+    <span class='kw'>when</span> <span class='CHAR'>?l</span>
+      <span class='id parse_list'>parse_list</span><span class='lparen'>(</span><span class='id scanner'>scanner</span><span class='rparen'>)</span>
+    <span class='kw'>when</span> <span class='CHAR'>?d</span>
+      <span class='id parse_dictionary'>parse_dictionary</span><span class='lparen'>(</span><span class='id scanner'>scanner</span><span class='rparen'>)</span>
+    <span class='kw'>else</span>
+      <span class='kw'>nil</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="parse_string-class_method">
+  
+    + (<tt><a href="String.html" title="BEncode::String (module)">String</a></tt>) <strong>parse_string</strong>(scanner) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+This method parases a bencoded string.
+</p>
+<pre class="code">
+  <span class='id scanner'>scanner</span> <span class='op'>=</span> <span class='const'>StringScanner</span><span class='period'>.</span><span class='id new'>new</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>6:string</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+  <span class='const'>BEncode</span><span class='op'>::</span><span class='const'>Parser</span><span class='period'>.</span><span class='id parse_string'>parse_string</span><span class='lparen'>(</span><span class='id scanner'>scanner</span><span class='rparen'>)</span> <span class='comment'>#=&gt; &quot;string&quot;
+</span></pre>
+
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Parameters:</h3>
+<ul class="param">
+  
+    <li>
+      
+        <span class='type'>(<tt>StringScanner</tt>)</span>
+      
+      
+        <span class='name'>scanner</span>
+      
+      
+      
+        &mdash;
+        
+the scanner of a bencoded string
+
+
+      
+    </li>
+  
+</ul>
+<h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+        <span class='type'>(<tt><a href="String.html" title="BEncode::String (module)">String</a></tt>)</span>
+      
+      
+      
+      
+        &mdash;
+        
+the parsed string
+
+
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+37
+38
+39
+40
+41</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/bencode/parser.rb', line 37</span>
+
+<span class='kw'>def</span> <span class='id parse_string'>parse_string</span><span class='lparen'>(</span><span class='id scanner'>scanner</span><span class='rparen'>)</span>
+  <span class='id length'>length</span> <span class='op'>=</span> <span class='id scanner'>scanner</span><span class='period'>.</span><span class='id scan'>scan</span><span class='lparen'>(</span><span class='tstring'><span class='regexp_beg'>/</span><span class='tstring_content'>[1-9][0-9]*|0</span><span class='regexp_end'>/</span></span><span class='rparen'>)</span>    <span class='kw'>or</span> <span class='id raise'>raise</span> <span class='const'>BEncodeError</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Invalid string: length invalid. </span><span class='embexpr_beg'>#{</span><span class='id scanner'>scanner</span><span class='period'>.</span><span class='id pos'>pos</span><span class='rbrace'>}</span><span class='tstring_end'>&quot;</span></span>
+  <span class='id scanner'>scanner</span><span class='period'>.</span><span class='id scan'>scan</span><span class='lparen'>(</span><span class='tstring'><span class='regexp_beg'>/</span><span class='tstring_content'>:</span><span class='regexp_end'>/</span></span><span class='rparen'>)</span>                         <span class='kw'>or</span> <span class='id raise'>raise</span> <span class='const'>BEncodeError</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Invalid string: missing colon(:). </span><span class='embexpr_beg'>#{</span><span class='id scanner'>scanner</span><span class='period'>.</span><span class='id pos'>pos</span><span class='rbrace'>}</span><span class='tstring_end'>&quot;</span></span>
+  <span class='id scanner'>scanner</span><span class='period'>.</span><span class='id scan'>scan</span><span class='lparen'>(</span><span class='tstring'><span class='regexp_beg'>/</span><span class='tstring_content'>.{</span><span class='embexpr_beg'>#{</span><span class='id length'>length</span><span class='period'>.</span><span class='id to_i'>to_i</span><span class='rbrace'>}</span><span class='tstring_content'>}</span><span class='regexp_end'>/</span></span><span class='rparen'>)</span>         <span class='kw'>or</span> <span class='id raise'>raise</span> <span class='const'>BEncodeError</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Invalid string: length too long(</span><span class='embexpr_beg'>#{</span><span class='id length'>length</span><span class='rbrace'>}</span><span class='tstring_content'>) </span><span class='embexpr_beg'>#{</span><span class='id scanner'>scanner</span><span class='period'>.</span><span class='id pos'>pos</span><span class='rbrace'>}</span><span class='tstring_content'>.</span><span class='tstring_end'>&quot;</span></span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+</div>
+    
+    <div id="footer">
+  Generated on Sat Jan 30 16:15:30 2010 by 
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool">yard</a>
+  0.5.3 (ruby-1.9.1).
+</div>
+
+  </body>
+</html>

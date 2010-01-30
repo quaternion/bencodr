@@ -1,0 +1,138 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta name="Content-Type" content="text/html; charset=UTF-8" />
+<title>File: parser</title>
+<link rel="stylesheet" href="css/style.css" type="text/css" media="screen" charset="utf-8" />
+<link rel="stylesheet" href="css/common.css" type="text/css" media="screen" charset="utf-8" />
+
+<script type="text/javascript" charset="utf-8">
+  relpath = '';
+  if (relpath != '') relpath += '/';
+</script>
+<script type="text/javascript" charset="utf-8" src="js/jquery.js"></script>
+<script type="text/javascript" charset="utf-8" src="js/app.js"></script>
+
+  </head>
+  <body>
+    <script type="text/javascript" charset="utf-8">
+      if (window.top.frames.main) document.body.className = 'frames';
+    </script>
+    
+    <div id="header">
+      <div id="menu">
+  
+    <a href="_index.html" title="Index">Index</a> &raquo; 
+    <span class="title">File: parser</span>
+  
+  
+  <div class="noframes"><span class="title">(</span><a href="." target="_top">no frames</a><span class="title">)</span></div>
+</div>
+
+      <div id="search">
+  <a id="class_list_link" href="#">Class List</a>
+  <a id="method_list_link" href="#">Method List</a>
+  <a id ="file_list_link" href="#">File List</a>
+</div>
+
+      <div class="clear"></div>
+    </div>
+    
+    <iframe id="search_frame"></iframe>
+    
+    <div id="content"><div id='filecontents'><p>
+# encoding: UTF-8
+</p>
+<p>
+require &#8216;strscan&#8217;
+</p>
+<p>
+module BEncode
+</p>
+<pre class="code">
+  <span class='kw'>module</span> <span class='const'>Parser</span>
+    <span class='kw'>class</span> <span class='op'>&lt;&lt;</span> <span class='kw'>self</span>
+      <span class='kw'>def</span> <span class='id parse_object'>parse_object</span><span class='lparen'>(</span><span class='id scanner'>scanner</span><span class='rparen'>)</span>
+        <span class='kw'>case</span> <span class='id scanner'>scanner</span><span class='period'>.</span><span class='id peek'>peek</span><span class='lparen'>(</span><span class='int'>1</span><span class='rparen'>)</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span>
+          <span class='kw'>when</span> <span class='CHAR'>?0</span><span class='op'>..</span><span class='CHAR'>?9</span>
+            <span class='id parse_string'>parse_string</span><span class='lparen'>(</span><span class='id scanner'>scanner</span><span class='rparen'>)</span>
+          <span class='kw'>when</span> <span class='CHAR'>?i</span>
+            <span class='id parse_integer'>parse_integer</span><span class='lparen'>(</span><span class='id scanner'>scanner</span><span class='rparen'>)</span>
+          <span class='kw'>when</span> <span class='CHAR'>?l</span>
+            <span class='id parse_list'>parse_list</span><span class='lparen'>(</span><span class='id scanner'>scanner</span><span class='rparen'>)</span>
+          <span class='kw'>when</span> <span class='CHAR'>?d</span>
+            <span class='id parse_dictionary'>parse_dictionary</span><span class='lparen'>(</span><span class='id scanner'>scanner</span><span class='rparen'>)</span>
+          <span class='kw'>else</span>
+            <span class='kw'>nil</span>
+        <span class='kw'>end</span>
+      <span class='kw'>end</span>
+
+      <span class='kw'>def</span> <span class='id parse_string'>parse_string</span><span class='lparen'>(</span><span class='id scanner'>scanner</span><span class='rparen'>)</span>
+        <span class='id length'>length</span> <span class='op'>=</span> <span class='id scanner'>scanner</span><span class='period'>.</span><span class='id scan'>scan</span><span class='lparen'>(</span><span class='tstring'><span class='regexp_beg'>/</span><span class='tstring_content'>[1-9][0-9]*|0</span><span class='regexp_end'>/</span></span><span class='rparen'>)</span>    <span class='kw'>or</span> <span class='id raise'>raise</span> <span class='const'>BEncodeError</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Invalid string: length invalid. </span><span class='embexpr_beg'>#{</span><span class='id scanner'>scanner</span><span class='period'>.</span><span class='id pos'>pos</span><span class='rbrace'>}</span><span class='tstring_end'>&quot;</span></span>
+        <span class='id scanner'>scanner</span><span class='period'>.</span><span class='id scan'>scan</span><span class='lparen'>(</span><span class='tstring'><span class='regexp_beg'>/</span><span class='tstring_content'>:</span><span class='regexp_end'>/</span></span><span class='rparen'>)</span>                         <span class='kw'>or</span> <span class='id raise'>raise</span> <span class='const'>BEncodeError</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Invalid string: missing colon(:). </span><span class='embexpr_beg'>#{</span><span class='id scanner'>scanner</span><span class='period'>.</span><span class='id pos'>pos</span><span class='rbrace'>}</span><span class='tstring_end'>&quot;</span></span>
+        <span class='id scanner'>scanner</span><span class='period'>.</span><span class='id scan'>scan</span><span class='lparen'>(</span><span class='tstring'><span class='regexp_beg'>/</span><span class='tstring_content'>.{</span><span class='embexpr_beg'>#{</span><span class='id length'>length</span><span class='period'>.</span><span class='id to_i'>to_i</span><span class='rbrace'>}</span><span class='tstring_content'>}</span><span class='regexp_end'>/</span></span><span class='rparen'>)</span>         <span class='kw'>or</span> <span class='id raise'>raise</span> <span class='const'>BEncodeError</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Invalid string: length too long(</span><span class='embexpr_beg'>#{</span><span class='id length'>length</span><span class='rbrace'>}</span><span class='tstring_content'>) </span><span class='embexpr_beg'>#{</span><span class='id scanner'>scanner</span><span class='period'>.</span><span class='id pos'>pos</span><span class='rbrace'>}</span><span class='tstring_content'>.</span><span class='tstring_end'>&quot;</span></span>
+      <span class='kw'>end</span>
+
+      <span class='kw'>def</span> <span class='id parse_integer'>parse_integer</span><span class='lparen'>(</span><span class='id scanner'>scanner</span><span class='rparen'>)</span>
+        <span class='id scanner'>scanner</span><span class='period'>.</span><span class='id scan'>scan</span><span class='lparen'>(</span><span class='tstring'><span class='regexp_beg'>/</span><span class='tstring_content'>i</span><span class='regexp_end'>/</span></span><span class='rparen'>)</span>                         <span class='kw'>or</span> <span class='id raise'>raise</span> <span class='const'>BEncodeError</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Invalid integer: missing opening i. </span><span class='embexpr_beg'>#{</span><span class='id scanner'>scanner</span><span class='period'>.</span><span class='id pos'>pos</span><span class='rbrace'>}</span><span class='tstring_end'>&quot;</span></span>
+        <span class='id integer'>integer</span> <span class='op'>=</span> <span class='id scanner'>scanner</span><span class='period'>.</span><span class='id scan'>scan</span><span class='lparen'>(</span><span class='tstring'><span class='regexp_beg'>/</span><span class='tstring_content'>-?[1-9][0-9]*|0</span><span class='regexp_end'>/</span></span><span class='rparen'>)</span> <span class='kw'>or</span> <span class='id raise'>raise</span> <span class='const'>BEncodeError</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Invalid integer: valid integer not found. </span><span class='embexpr_beg'>#{</span><span class='id scanner'>scanner</span><span class='period'>.</span><span class='id pos'>pos</span><span class='rbrace'>}</span><span class='tstring_end'>&quot;</span></span>
+        <span class='id scanner'>scanner</span><span class='period'>.</span><span class='id scan'>scan</span><span class='lparen'>(</span><span class='tstring'><span class='regexp_beg'>/</span><span class='tstring_content'>e</span><span class='regexp_end'>/</span></span><span class='rparen'>)</span>                         <span class='kw'>or</span> <span class='id raise'>raise</span> <span class='const'>BEncodeError</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Invalid integer: missing closing e. </span><span class='embexpr_beg'>#{</span><span class='id scanner'>scanner</span><span class='period'>.</span><span class='id pos'>pos</span><span class='rbrace'>}</span><span class='tstring_end'>&quot;</span></span>
+        <span class='id integer'>integer</span><span class='period'>.</span><span class='id to_i'>to_i</span>
+      <span class='kw'>end</span>
+
+      <span class='kw'>def</span> <span class='id parse_list'>parse_list</span><span class='lparen'>(</span><span class='id scanner'>scanner</span><span class='rparen'>)</span>
+        <span class='id list'>list</span> <span class='op'>=</span> <span class='lbracket'>[</span><span class='rbracket'>]</span>
+
+        <span class='id scanner'>scanner</span><span class='period'>.</span><span class='id scan'>scan</span><span class='lparen'>(</span><span class='tstring'><span class='regexp_beg'>/</span><span class='tstring_content'>l</span><span class='regexp_end'>/</span></span><span class='rparen'>)</span> <span class='kw'>or</span> <span class='id raise'>raise</span> <span class='const'>BEncodeError</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Invalid list: missing opening l. </span><span class='embexpr_beg'>#{</span><span class='id scanner'>scanner</span><span class='period'>.</span><span class='id pos'>pos</span><span class='rbrace'>}</span><span class='tstring_end'>&quot;</span></span>
+        <span class='kw'>while</span> <span class='kw'>true</span>
+          <span class='id object'>object</span> <span class='op'>=</span> <span class='id parse_object'>parse_object</span><span class='lparen'>(</span><span class='id scanner'>scanner</span><span class='rparen'>)</span>
+          <span class='kw'>break</span> <span class='kw'>unless</span> <span class='id object'>object</span>
+          <span class='id list'>list</span> <span class='op'>&lt;&lt;</span> <span class='id object'>object</span>
+        <span class='kw'>end</span>
+        <span class='id scanner'>scanner</span><span class='period'>.</span><span class='id scan'>scan</span><span class='lparen'>(</span><span class='tstring'><span class='regexp_beg'>/</span><span class='tstring_content'>e</span><span class='regexp_end'>/</span></span><span class='rparen'>)</span> <span class='kw'>or</span> <span class='id raise'>raise</span> <span class='const'>BEncodeError</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Invalid list: missing closing e. </span><span class='embexpr_beg'>#{</span><span class='id scanner'>scanner</span><span class='period'>.</span><span class='id pos'>pos</span><span class='rbrace'>}</span><span class='tstring_end'>&quot;</span></span>
+
+        <span class='id list'>list</span>
+      <span class='kw'>end</span>
+
+      <span class='kw'>def</span> <span class='id parse_dictionary'>parse_dictionary</span><span class='lparen'>(</span><span class='id scanner'>scanner</span><span class='rparen'>)</span>
+        <span class='id dictionary'>dictionary</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span>
+
+        <span class='id scanner'>scanner</span><span class='period'>.</span><span class='id scan'>scan</span><span class='lparen'>(</span><span class='tstring'><span class='regexp_beg'>/</span><span class='tstring_content'>d</span><span class='regexp_end'>/</span></span><span class='rparen'>)</span> <span class='kw'>or</span> <span class='id raise'>raise</span> <span class='const'>BEncodeError</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Invalid dictionary: missing opening d. </span><span class='embexpr_beg'>#{</span><span class='id scanner'>scanner</span><span class='period'>.</span><span class='id pos'>pos</span><span class='rbrace'>}</span><span class='tstring_end'>&quot;</span></span>
+        <span class='kw'>while</span> <span class='kw'>true</span>
+          <span class='id key_value'>key_value</span> <span class='op'>=</span> <span class='id parse_key_value'>parse_key_value</span><span class='lparen'>(</span><span class='id scanner'>scanner</span><span class='rparen'>)</span>
+          <span class='kw'>break</span> <span class='kw'>unless</span> <span class='id key_value'>key_value</span>
+          <span class='id dictionary'>dictionary</span><span class='period'>.</span><span class='id store'>store</span><span class='lparen'>(</span><span class='op'>*</span><span class='id key_value'>key_value</span><span class='rparen'>)</span>
+        <span class='kw'>end</span>
+        <span class='id scanner'>scanner</span><span class='period'>.</span><span class='id scan'>scan</span><span class='lparen'>(</span><span class='tstring'><span class='regexp_beg'>/</span><span class='tstring_content'>e</span><span class='regexp_end'>/</span></span><span class='rparen'>)</span> <span class='kw'>or</span> <span class='id raise'>raise</span> <span class='const'>BEncodeError</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Invalid dictionary: missing closing e. </span><span class='embexpr_beg'>#{</span><span class='id scanner'>scanner</span><span class='period'>.</span><span class='id pos'>pos</span><span class='rbrace'>}</span><span class='tstring_end'>&quot;</span></span>
+
+        <span class='id dictionary'>dictionary</span>
+      <span class='kw'>end</span>
+
+      <span class='kw'>def</span> <span class='id parse_key_value'>parse_key_value</span><span class='lparen'>(</span><span class='id scanner'>scanner</span><span class='rparen'>)</span>
+        <span class='id key'>key</span> <span class='op'>=</span> <span class='id parse_object'>parse_object</span><span class='lparen'>(</span><span class='id scanner'>scanner</span><span class='rparen'>)</span>
+        <span class='kw'>return</span> <span class='id key'>key</span> <span class='kw'>unless</span> <span class='id key'>key</span>
+        <span class='id raise'>raise</span> <span class='const'>BEncodeError</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Invalid dictionary: key is not a string. </span><span class='embexpr_beg'>#{</span><span class='id scanner'>scanner</span><span class='period'>.</span><span class='id pos'>pos</span><span class='rbrace'>}</span><span class='tstring_end'>&quot;</span></span> <span class='kw'>unless</span> <span class='id key'>key</span><span class='period'>.</span><span class='id is_a?'>is_a?</span><span class='lparen'>(</span><span class='op'>::</span><span class='const'>String</span><span class='rparen'>)</span>
+
+        <span class='id value'>value</span> <span class='op'>=</span> <span class='id parse_object'>parse_object</span><span class='lparen'>(</span><span class='id scanner'>scanner</span><span class='rparen'>)</span>
+        <span class='id raise'>raise</span> <span class='const'>BEncodeError</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Invalid dictionary: missing value for key (</span><span class='embexpr_beg'>#{</span><span class='id key'>key</span><span class='rbrace'>}</span><span class='tstring_content'>). </span><span class='embexpr_beg'>#{</span><span class='id scanner'>scanner</span><span class='period'>.</span><span class='id pos'>pos</span><span class='rbrace'>}</span><span class='tstring_end'>&quot;</span></span> <span class='kw'>unless</span> <span class='id value'>value</span>
+
+        <span class='lbracket'>[</span><span class='id key'>key</span><span class='comma'>,</span> <span class='id value'>value</span><span class='rbracket'>]</span>
+      <span class='kw'>end</span>
+      <span class='id private'>private</span> <span class='symbol'>:parse_key_value</span>
+    <span class='kw'>end</span>
+  <span class='kw'>end</span>
+</pre>
+<p>
+end
+</p>
+</div></div>
+    
+    <div id="footer">
+  Generated on Sat Jan 30 02:00:55 2010 by 
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool">yard</a>
+  0.5.3 (ruby-1.9.1).
+</div>
+
+  </body>
+</html>

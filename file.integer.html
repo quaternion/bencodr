@@ -1,0 +1,111 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta name="Content-Type" content="text/html; charset=UTF-8" />
+<title>File: integer</title>
+<link rel="stylesheet" href="css/style.css" type="text/css" media="screen" charset="utf-8" />
+<link rel="stylesheet" href="css/common.css" type="text/css" media="screen" charset="utf-8" />
+
+<script type="text/javascript" charset="utf-8">
+  relpath = '';
+  if (relpath != '') relpath += '/';
+</script>
+<script type="text/javascript" charset="utf-8" src="js/jquery.js"></script>
+<script type="text/javascript" charset="utf-8" src="js/app.js"></script>
+
+  </head>
+  <body>
+    <script type="text/javascript" charset="utf-8">
+      if (window.top.frames.main) document.body.className = 'frames';
+    </script>
+    
+    <div id="header">
+      <div id="menu">
+  
+    <a href="_index.html" title="Index">Index</a> &raquo; 
+    <span class="title">File: integer</span>
+  
+  
+  <div class="noframes"><span class="title">(</span><a href="." target="_top">no frames</a><span class="title">)</span></div>
+</div>
+
+      <div id="search">
+  <a id="class_list_link" href="#">Class List</a>
+  <a id="method_list_link" href="#">Method List</a>
+  <a id ="file_list_link" href="#">File List</a>
+</div>
+
+      <div class="clear"></div>
+    </div>
+    
+    <iframe id="search_frame"></iframe>
+    
+    <div id="content"><div id='filecontents'><p>
+# encoding: UTF-8
+</p>
+<p>
+module BEncode
+</p>
+<pre class="code">
+  <span class='kw'>module</span> <span class='const'>Integer</span>
+    <span class='kw'>module</span> <span class='const'>Generic</span>
+      <span class='kw'>module</span> <span class='const'>InstanceMethods</span>
+        <span class='comment'># Encodes object into a bencoded integer. BEncoded strings are length-prefixed base ten followed by a colon and
+</span>        <span class='comment'># the string. Object must implement to_i or to_int.
+</span>        <span class='comment'>#
+</span>        <span class='comment'># :symbol.bencode #=&gt; &quot;6:symbol&quot;
+</span>        <span class='kw'>def</span> <span class='id bencode'>bencode</span>
+          <span class='lparen'>(</span><span class='id respond_to?'>respond_to?</span><span class='lparen'>(</span><span class='symbol'>:to_i</span><span class='rparen'>)</span> <span class='op'>?</span> <span class='id to_i'>to_i</span> <span class='op'>:</span> <span class='id to_int'>to_int</span><span class='rparen'>)</span><span class='period'>.</span><span class='id bencode'>bencode</span>
+        <span class='kw'>end</span>
+      <span class='kw'>end</span>
+    <span class='kw'>end</span>
+
+    <span class='comment'># Registers a class as an object that can be converted into a bencoded integer. Class must have instance method to_i
+</span>    <span class='comment'># or to_int.
+</span>    <span class='comment'>#
+</span>    <span class='comment'># class MyClass
+</span>    <span class='comment'>#   def to_i
+</span>    <span class='comment'>#     1
+</span>    <span class='comment'>#   end
+</span>    <span class='comment'># end
+</span>    <span class='comment'>#
+</span>    <span class='comment'># BEncode::Integer.register MyClass
+</span>    <span class='comment'># my_class = MyClass.new
+</span>    <span class='comment'># my_class.bencode  #=&gt; &quot;i1e&quot;
+</span>    <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id register'>register</span><span class='lparen'>(</span><span class='id type'>type</span><span class='rparen'>)</span>
+      <span class='id type'>type</span><span class='period'>.</span><span class='id send'>send</span> <span class='symbol'>:include</span><span class='comma'>,</span> <span class='const'>Generic</span><span class='op'>::</span><span class='const'>InstanceMethods</span>
+    <span class='kw'>end</span>
+
+    <span class='id register'>register</span> <span class='const'>Numeric</span>
+    <span class='id register'>register</span> <span class='const'>Time</span>
+
+    <span class='kw'>module</span> <span class='const'>Integer</span>
+      <span class='kw'>module</span> <span class='const'>InstanceMethods</span>
+        <span class='comment'># Encodes an integer into a bencoded integer. Bencoded integers are represented by an 'i' followed by the number
+</span>        <span class='comment'># in base 10 followed by an 'e'.
+</span>        <span class='comment'>#
+</span>        <span class='comment'>#  3.bencode #=&gt; &quot;i3e&quot;
+</span>        <span class='comment'># -3.bencode #=&gt; &quot;i-3e&quot;
+</span>        <span class='kw'>def</span> <span class='id bencode'>bencode</span>
+          <span class='lbracket'>[</span><span class='symbol'>:i</span><span class='comma'>,</span> <span class='kw'>self</span><span class='comma'>,</span> <span class='symbol'>:e</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id join'>join</span>
+        <span class='kw'>end</span>
+      <span class='kw'>end</span>
+
+      <span class='op'>::</span><span class='const'>Integer</span><span class='period'>.</span><span class='id send'>send</span> <span class='symbol'>:include</span><span class='comma'>,</span> <span class='const'>InstanceMethods</span>
+    <span class='kw'>end</span>
+  <span class='kw'>end</span>
+</pre>
+<p>
+end
+</p>
+</div></div>
+    
+    <div id="footer">
+  Generated on Sat Jan 30 02:00:55 2010 by 
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool">yard</a>
+  0.5.3 (ruby-1.9.1).
+</div>
+
+  </body>
+</html>

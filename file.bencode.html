@@ -1,0 +1,85 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta name="Content-Type" content="text/html; charset=UTF-8" />
+<title>File: bencode</title>
+<link rel="stylesheet" href="css/style.css" type="text/css" media="screen" charset="utf-8" />
+<link rel="stylesheet" href="css/common.css" type="text/css" media="screen" charset="utf-8" />
+
+<script type="text/javascript" charset="utf-8">
+  relpath = '';
+  if (relpath != '') relpath += '/';
+</script>
+<script type="text/javascript" charset="utf-8" src="js/jquery.js"></script>
+<script type="text/javascript" charset="utf-8" src="js/app.js"></script>
+
+  </head>
+  <body>
+    <script type="text/javascript" charset="utf-8">
+      if (window.top.frames.main) document.body.className = 'frames';
+    </script>
+    
+    <div id="header">
+      <div id="menu">
+  
+    <a href="_index.html" title="Index">Index</a> &raquo; 
+    <span class="title">File: bencode</span>
+  
+  
+  <div class="noframes"><span class="title">(</span><a href="." target="_top">no frames</a><span class="title">)</span></div>
+</div>
+
+      <div id="search">
+  <a id="class_list_link" href="#">Class List</a>
+  <a id="method_list_link" href="#">Method List</a>
+  <a id ="file_list_link" href="#">File List</a>
+</div>
+
+      <div class="clear"></div>
+    </div>
+    
+    <iframe id="search_frame"></iframe>
+    
+    <div id="content"><div id='filecontents'><p>
+# encoding: UTF-8
+</p>
+<p>
+path = File.expand_path(File.dirname(<em>FILE</em>)) +
+&#8220;/bencode&#8220;
+</p>
+<p>
+require path + &#8220;/string&#8221; require path + &#8220;/integer&#8221;
+require path + &#8220;/list&#8221; require path + &#8220;/dictionary&#8221;
+require path + &#8220;/parser&#8220;
+</p>
+<p>
+module BEncode
+</p>
+<pre class="code">
+  <span class='kw'>class</span> <span class='const'>BEncodeError</span> <span class='op'>&lt;</span> <span class='const'>StandardError</span><span class='semicolon'>;</span> <span class='kw'>end</span>
+
+  <span class='kw'>class</span> <span class='op'>&lt;&lt;</span> <span class='kw'>self</span>
+    <span class='kw'>def</span> <span class='id parse'>parse</span><span class='lparen'>(</span><span class='id string'>string</span><span class='rparen'>)</span>
+      <span class='id scanner'>scanner</span> <span class='op'>=</span> <span class='const'>StringScanner</span><span class='period'>.</span><span class='id new'>new</span><span class='lparen'>(</span><span class='id string'>string</span><span class='rparen'>)</span>
+      <span class='const'>Parser</span><span class='period'>.</span><span class='id parse_object'>parse_object</span><span class='lparen'>(</span><span class='id scanner'>scanner</span><span class='rparen'>)</span> <span class='kw'>or</span> <span class='id raise'>raise</span> <span class='const'>BEncodeError</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Invalid bencoding</span><span class='tstring_end'>&quot;</span></span>
+    <span class='kw'>end</span>
+
+    <span class='kw'>def</span> <span class='id parse_file'>parse_file</span><span class='lparen'>(</span><span class='id file'>file</span><span class='rparen'>)</span>
+      <span class='id parse'>parse</span><span class='lparen'>(</span><span class='const'>File</span><span class='period'>.</span><span class='id read'>read</span><span class='lparen'>(</span><span class='id file'>file</span><span class='rparen'>)</span><span class='rparen'>)</span>
+    <span class='kw'>end</span>
+  <span class='kw'>end</span>
+</pre>
+<p>
+end
+</p>
+</div></div>
+    
+    <div id="footer">
+  Generated on Sat Jan 30 02:00:56 2010 by 
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool">yard</a>
+  0.5.3 (ruby-1.9.1).
+</div>
+
+  </body>
+</html>
