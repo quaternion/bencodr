@@ -41,7 +41,29 @@
     
     <iframe id="search_frame"></iframe>
     
-    <div id="content"><div id='filecontents'><h1>BEncode</h1>
+    <div id="content"><div id='filecontents'><h1>BEncode 1.0</h1>
+<ul>
+<li><b>Author</b> Allen Madsen (blatyo)
+
+</li>
+<li><b>My</b> <b>Site</b> <a
+href="http://www.allenmadsen.com">www.allenmadsen.com</a>
+
+</li>
+<li><b>Gem</b> <a
+href="http://gemcutter.org/gems/bencode_blatyo">gemcutter.org/gems/bencode_blatyo</a>
+
+</li>
+<li><b>Source</b> <a
+href="http://github.com/blatyo/bencode">github.com/blatyo/bencode</a>
+
+</li>
+<li><b>Documentation</b> <a
+href="http://blatyo.github.com/bencode">blatyo.github.com/bencode</a>
+
+</li>
+</ul>
+<h2>Synopsis</h2>
 <p>
 This gem provides a way to encode and parse bencodings used by the Bit
 Torrent protocol.
@@ -57,7 +79,7 @@ Torrent protocol.
     Installing RDoc documentation for bencode_blatyo-1.0.0.
 
     # somefile.rb
-    require 'bencode_blatyo'
+    require 'bencode'
 </pre>
 <h2>Examples</h2>
 <h3>String</h3>
@@ -145,6 +167,42 @@ alphanumerics) and are always strings.
 </span>    <span class='const'>BEncode</span><span class='period'>.</span><span class='id encode_file'>encode_file</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>my_awesome.torrent</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='lbrace'>{</span><span class='symbol'>:announce</span> <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>http://www.sometracker.com/announce:80</span><span class='tstring_end'>&quot;</span></span><span class='rbrace'>}</span><span class='rparen'>)</span>
     <span class='const'>BEncode</span><span class='period'>.</span><span class='id decode_file'>decode_file</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>my_awesome.torrent</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span> <span class='comment'>#=&gt; {:announce =&gt; &quot;http://www.sometracker.com/announce:80&quot;}
 </span></pre>
+<h3>Registering Types</h3>
+<p>
+When using bencodings it may be useful to translate your own objects into
+bencoded strings. You can do that with the register methods on each BEncode
+type. All register does is define a bencode instance method for the class
+that internally uses type conversion. That means if you want to specify a
+String type then your class must have a to_s or to_str instance method. The
+same goes for all the other types.
+</p>
+<p>
+Keep in mind when registering that if you register a class for two separate
+types it will only retain the bencode method of the last type registered
+for.
+</p>
+<pre class="code">
+    <span class='comment'># register string type
+</span>    <span class='const'>BEncode</span><span class='op'>::</span><span class='const'>String</span><span class='period'>.</span><span class='id register'>register</span> <span class='const'>Range</span>
+    <span class='lparen'>(</span><span class='int'>1</span><span class='op'>..</span><span class='int'>2</span><span class='rparen'>)</span><span class='period'>.</span><span class='id bencode'>bencode</span>      <span class='comment'>#=&gt; &quot;4:1..2&quot;
+</span>
+    <span class='comment'># register integer type
+</span>    <span class='const'>BEncode</span><span class='op'>::</span><span class='const'>Integer</span><span class='period'>.</span><span class='id register'>register</span> <span class='const'>NilClass</span>
+    <span class='kw'>nil</span><span class='period'>.</span><span class='id bencode'>bencode</span>         <span class='comment'>#=&gt; &quot;i0e&quot;
+</span>
+    <span class='comment'># register list type
+</span>    <span class='const'>BEncode</span><span class='op'>::</span><span class='const'>List</span><span class='period'>.</span><span class='id register'>register</span> <span class='const'>Range</span>
+    <span class='lparen'>(</span><span class='int'>1</span><span class='op'>..</span><span class='int'>2</span><span class='rparen'>)</span><span class='period'>.</span><span class='id bencode'>bencode</span>      <span class='comment'>#=&gt; &quot;li1ei2ee&quot;
+</span>
+    <span class='comment'>#register dictionary type
+</span>    <span class='const'>MyClass</span> <span class='op'>=</span> <span class='const'>Class</span><span class='period'>.</span><span class='id new'>new</span> <span class='kw'>do</span>
+      <span class='kw'>def</span> <span class='id to_h'>to_h</span>
+        <span class='lbrace'>{</span><span class='symbol'>:a</span> <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>a</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='symbol'>:b</span> <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>b</span><span class='tstring_end'>&quot;</span></span><span class='rbrace'>}</span>
+      <span class='kw'>end</span>
+    <span class='kw'>end</span>
+    <span class='const'>BEncode</span><span class='op'>::</span><span class='const'>Dictionary</span><span class='period'>.</span><span class='id register'>register</span> <span class='const'>MyClass</span>
+    <span class='const'>MyClass</span><span class='period'>.</span><span class='id new'>new</span><span class='period'>.</span><span class='id bencode'>bencode</span> <span class='comment'>#=&gt; &quot;d1:a1:a1:b1:be&quot;
+</span></pre>
 <h2>Note on Patches/Pull Requests</h2>
 <ul>
 <li>Fork the project.
@@ -173,7 +231,7 @@ Copyright &#169; 2010 blatyo. See LICENSE for details.
 </div></div>
     
     <div id="footer">
-  Generated on Sat Jan 30 16:15:29 2010 by 
+  Generated on Sat Jan 30 22:39:54 2010 by 
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool">yard</a>
   0.5.3 (ruby-1.9.1).
 </div>
