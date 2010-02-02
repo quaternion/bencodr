@@ -72,7 +72,7 @@
       <li class="public ">
   <span class="summary_signature">
     
-      <a href="#parse_dictionary-class_method" title="parse_dictionary (class method)">+ (Hash) <strong>parse_dictionary</strong>(scanner) </a>
+      <a href="#parse_dictionary-class_method" title="parse_dictionary (class method)">+ (::Hash) <strong>parse_dictionary</strong>(scanner) </a>
     
 
     
@@ -95,7 +95,7 @@ This method parases a bencoded dictionary.
       <li class="public ">
   <span class="summary_signature">
     
-      <a href="#parse_integer-class_method" title="parse_integer (class method)">+ (Integer) <strong>parse_integer</strong>(scanner) </a>
+      <a href="#parse_integer-class_method" title="parse_integer (class method)">+ (::Integer) <strong>parse_integer</strong>(scanner) </a>
     
 
     
@@ -118,7 +118,7 @@ This method parases a bencoded integer.
       <li class="public ">
   <span class="summary_signature">
     
-      <a href="#parse_list-class_method" title="parse_list (class method)">+ (Array) <strong>parse_list</strong>(scanner) </a>
+      <a href="#parse_list-class_method" title="parse_list (class method)">+ (::Array) <strong>parse_list</strong>(scanner) </a>
     
 
     
@@ -141,7 +141,7 @@ This method parases a bencoded list.
       <li class="public ">
   <span class="summary_signature">
     
-      <a href="#parse_object-class_method" title="parse_object (class method)">+ (String, ...) <strong>parse_object</strong>(scanner) </a>
+      <a href="#parse_object-class_method" title="parse_object (class method)">+ (::String, ...) <strong>parse_object</strong>(scanner) </a>
     
 
     
@@ -164,7 +164,7 @@ This method parases a bencoded object.
       <li class="public ">
   <span class="summary_signature">
     
-      <a href="#parse_string-class_method" title="parse_string (class method)">+ (String) <strong>parse_string</strong>(scanner) </a>
+      <a href="#parse_string-class_method" title="parse_string (class method)">+ (::String) <strong>parse_string</strong>(scanner) </a>
     
 
     
@@ -194,7 +194,7 @@ This method parases a bencoded string.
       <div class="method_details first">
   <p class="signature first" id="parse_dictionary-class_method">
   
-    + (<tt>Hash</tt>) <strong>parse_dictionary</strong>(scanner) 
+    + (<tt>::Hash</tt>) <strong>parse_dictionary</strong>(scanner) 
   
 
   
@@ -238,7 +238,7 @@ the scanner of a bencoded dictionary
   
     <li>
       
-        <span class='type'>(<tt>Hash</tt>)</span>
+        <span class='type'>(<tt>::Hash</tt>)</span>
       
       
       
@@ -297,7 +297,7 @@ the parsed hash
       <div class="method_details ">
   <p class="signature " id="parse_integer-class_method">
   
-    + (<tt><a href="Integer.html" title="BEncode::Integer (module)">Integer</a></tt>) <strong>parse_integer</strong>(scanner) 
+    + (<tt>::Integer</tt>) <strong>parse_integer</strong>(scanner) 
   
 
   
@@ -341,7 +341,7 @@ the scanner of a bencoded integer
   
     <li>
       
-        <span class='type'>(<tt><a href="Integer.html" title="BEncode::Integer (module)">Integer</a></tt>)</span>
+        <span class='type'>(<tt>::Integer</tt>)</span>
       
       
       
@@ -386,7 +386,7 @@ the parsed integer
       <div class="method_details ">
   <p class="signature " id="parse_list-class_method">
   
-    + (<tt>Array</tt>) <strong>parse_list</strong>(scanner) 
+    + (<tt>::Array</tt>) <strong>parse_list</strong>(scanner) 
   
 
   
@@ -430,7 +430,7 @@ the scanner of a bencoded list
   
     <li>
       
-        <span class='type'>(<tt>Array</tt>)</span>
+        <span class='type'>(<tt>::Array</tt>)</span>
       
       
       
@@ -489,7 +489,7 @@ the parsed array
       <div class="method_details ">
   <p class="signature " id="parse_object-class_method">
   
-    + (<tt><a href="String.html" title="BEncode::String (module)">String</a></tt>, ...) <strong>parse_object</strong>(scanner) 
+    + (<tt>::String</tt>, ...) <strong>parse_object</strong>(scanner) 
   
 
   
@@ -533,7 +533,7 @@ the scanner of a bencoded object
   
     <li>
       
-        <span class='type'>(<tt><a href="String.html" title="BEncode::String (module)">String</a></tt>, <tt><a href="Integer.html" title="BEncode::Integer (module)">Integer</a></tt>, <tt>Hash</tt>, <tt>Array</tt>, <tt>nil</tt>)</span>
+        <span class='type'>(<tt>::String</tt>, <tt>::Integer</tt>, <tt>::Hash</tt>, <tt>::Array</tt>, <tt>nil</tt>)</span>
       
       
       
@@ -594,7 +594,7 @@ an object if type is recognized or nil
       <div class="method_details ">
   <p class="signature " id="parse_string-class_method">
   
-    + (<tt><a href="String.html" title="BEncode::String (module)">String</a></tt>) <strong>parse_string</strong>(scanner) 
+    + (<tt>::String</tt>) <strong>parse_string</strong>(scanner) 
   
 
   
@@ -638,7 +638,7 @@ the scanner of a bencoded string
   
     <li>
       
-        <span class='type'>(<tt><a href="String.html" title="BEncode::String (module)">String</a></tt>)</span>
+        <span class='type'>(<tt>::String</tt>)</span>
       
       
       
@@ -683,7 +683,7 @@ the parsed string
 </div>
     
     <div id="footer">
-  Generated on Tue Feb  2 09:56:26 2010 by 
+  Generated on Tue Feb  2 11:26:15 2010 by 
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool">yard</a>
   0.5.3 (ruby-1.9.1).
 </div>
