@@ -41,7 +41,7 @@
     
     <iframe id="search_frame"></iframe>
     
-    <div id="content"><div id='filecontents'><h1>BEncode</h1>
+    <div id="content"><div id='filecontents'><h1>BEncodr</h1>
 <ul>
 <li><b>Author</b> Allen Madsen (blatyo)
 
@@ -51,19 +51,19 @@ href="http://www.allenmadsen.com">www.allenmadsen.com</a>
 
 </li>
 <li><b>Gem</b> <a
-href="http://gemcutter.org/gems/bencode_blatyo">gemcutter.org/gems/bencode_blatyo</a>
+href="http://gemcutter.org/gems/bencodr">gemcutter.org/gems/bencodr</a>
 
 </li>
 <li><b>Source</b> <a
-href="http://github.com/blatyo/bencode">github.com/blatyo/bencode</a>
+href="http://github.com/blatyo/bencodr">github.com/blatyo/bencodr</a>
 
 </li>
 <li><b>Documentation</b> <a
-href="http://blatyo.github.com/bencode">blatyo.github.com/bencode</a>
+href="http://blatyo.github.com/bencodr">blatyo.github.com/bencodr</a>
 
 </li>
 <li><b>Issue</b> <b>Tracker</b> <a
-href="http://github.com/blatyo/bencode/issues">github.com/blatyo/bencode/issues</a>
+href="http://github.com/blatyo/bencodr/issues">github.com/blatyo/bencodr/issues</a>
 
 </li>
 </ul>
@@ -75,15 +75,15 @@ Torrent protocol.
 <h2>Installation</h2>
 <pre class="code">
     # install the gem
-    &gt; gem install bencode_blatyo
-    Successfully installed bencode_blatyo
+    &gt; gem install bencodr
+    Successfully installed bencodr
     1 gem installed
-    Installing ri documentation for bencode_blatyo...
-    Building YARD (yri) index for bencode_blatyo...
-    Installing RDoc documentation for bencode_blatyo
+    Installing ri documentation for bencodr...
+    Building YARD (yri) index for bencodr...
+    Installing RDoc documentation for bencodr
 
     # somefile.rb
-    require 'bencode'
+    require 'bencodr'
 </pre>
 <h2>Examples</h2>
 <h3>String</h3>
@@ -159,17 +159,17 @@ alphanumerics) and are always strings.
 <h3>Encoding and Decoding</h3>
 <pre class="code">
     <span class='comment'># encoding is just like calling bencode on the object
-</span>    <span class='const'>BEncode</span><span class='period'>.</span><span class='id encode'>encode</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>string</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>    <span class='comment'>#=&gt; &quot;6:string&quot;
+</span>    <span class='const'>BEncodr</span><span class='period'>.</span><span class='id encode'>encode</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>string</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>    <span class='comment'>#=&gt; &quot;6:string&quot;
 </span>
     <span class='comment'># decoding takes a string and return either a String, Integer, Array, or Hash
-</span>    <span class='const'>BEncode</span><span class='period'>.</span><span class='id decode'>decode</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>6:string</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>  <span class='comment'>#=&gt; &quot;string&quot;
-</span>    <span class='const'>BEncode</span><span class='period'>.</span><span class='id decode'>decode</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>i1e</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>       <span class='comment'>#=&gt; 1
-</span>    <span class='const'>BEncode</span><span class='period'>.</span><span class='id decode'>decode</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>le</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>        <span class='comment'>#=&gt; []
-</span>    <span class='const'>BEncode</span><span class='period'>.</span><span class='id decode'>decode</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>de</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>        <span class='comment'>#=&gt; {}
+</span>    <span class='const'>BEncodr</span><span class='period'>.</span><span class='id decode'>decode</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>6:string</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>  <span class='comment'>#=&gt; &quot;string&quot;
+</span>    <span class='const'>BEncodr</span><span class='period'>.</span><span class='id decode'>decode</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>i1e</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>       <span class='comment'>#=&gt; 1
+</span>    <span class='const'>BEncodr</span><span class='period'>.</span><span class='id decode'>decode</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>le</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>        <span class='comment'>#=&gt; []
+</span>    <span class='const'>BEncodr</span><span class='period'>.</span><span class='id decode'>decode</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>de</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>        <span class='comment'>#=&gt; {}
 </span>
     <span class='comment'># you can work directly with files too
-</span>    <span class='const'>BEncode</span><span class='period'>.</span><span class='id encode_file'>encode_file</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>my_awesome.torrent</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='lbrace'>{</span><span class='symbol'>:announce</span> <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>http://www.sometracker.com/announce:80</span><span class='tstring_end'>&quot;</span></span><span class='rbrace'>}</span><span class='rparen'>)</span>
-    <span class='const'>BEncode</span><span class='period'>.</span><span class='id decode_file'>decode_file</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>my_awesome.torrent</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span> <span class='comment'>#=&gt; {:announce =&gt; &quot;http://www.sometracker.com/announce:80&quot;}
+</span>    <span class='const'>BEncodr</span><span class='period'>.</span><span class='id encode_file'>encode_file</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>my_awesome.torrent</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='lbrace'>{</span><span class='symbol'>:announce</span> <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>http://www.sometracker.com/announce:80</span><span class='tstring_end'>&quot;</span></span><span class='rbrace'>}</span><span class='rparen'>)</span>
+    <span class='const'>BEncodr</span><span class='period'>.</span><span class='id decode_file'>decode_file</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>my_awesome.torrent</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span> <span class='comment'>#=&gt; {:announce =&gt; &quot;http://www.sometracker.com/announce:80&quot;}
 </span></pre>
 <h3>Registering Types</h3>
 <p>
@@ -187,15 +187,15 @@ for.
 </p>
 <pre class="code">
     <span class='comment'># register string type
-</span>    <span class='const'>BEncode</span><span class='op'>::</span><span class='const'>String</span><span class='period'>.</span><span class='id register'>register</span> <span class='const'>Range</span>
+</span>    <span class='const'>BEncodr</span><span class='op'>::</span><span class='const'>String</span><span class='period'>.</span><span class='id register'>register</span> <span class='const'>Range</span>
     <span class='lparen'>(</span><span class='int'>1</span><span class='op'>..</span><span class='int'>2</span><span class='rparen'>)</span><span class='period'>.</span><span class='id bencode'>bencode</span>      <span class='comment'>#=&gt; &quot;4:1..2&quot;
 </span>
     <span class='comment'># register integer type
-</span>    <span class='const'>BEncode</span><span class='op'>::</span><span class='const'>Integer</span><span class='period'>.</span><span class='id register'>register</span> <span class='const'>NilClass</span>
+</span>    <span class='const'>BEncodr</span><span class='op'>::</span><span class='const'>Integer</span><span class='period'>.</span><span class='id register'>register</span> <span class='const'>NilClass</span>
     <span class='kw'>nil</span><span class='period'>.</span><span class='id bencode'>bencode</span>         <span class='comment'>#=&gt; &quot;i0e&quot;
 </span>
     <span class='comment'># register list type
-</span>    <span class='const'>BEncode</span><span class='op'>::</span><span class='const'>List</span><span class='period'>.</span><span class='id register'>register</span> <span class='const'>Range</span>
+</span>    <span class='const'>BEncodr</span><span class='op'>::</span><span class='const'>List</span><span class='period'>.</span><span class='id register'>register</span> <span class='const'>Range</span>
     <span class='lparen'>(</span><span class='int'>1</span><span class='op'>..</span><span class='int'>2</span><span class='rparen'>)</span><span class='period'>.</span><span class='id bencode'>bencode</span>      <span class='comment'>#=&gt; &quot;li1ei2ee&quot;
 </span>
     <span class='comment'>#register dictionary type
@@ -204,7 +204,7 @@ for.
         <span class='lbrace'>{</span><span class='symbol'>:a</span> <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>a</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='symbol'>:b</span> <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>b</span><span class='tstring_end'>&quot;</span></span><span class='rbrace'>}</span>
       <span class='kw'>end</span>
     <span class='kw'>end</span>
-    <span class='const'>BEncode</span><span class='op'>::</span><span class='const'>Dictionary</span><span class='period'>.</span><span class='id register'>register</span> <span class='const'>MyClass</span>
+    <span class='const'>BEncodr</span><span class='op'>::</span><span class='const'>Dictionary</span><span class='period'>.</span><span class='id register'>register</span> <span class='const'>MyClass</span>
     <span class='const'>MyClass</span><span class='period'>.</span><span class='id new'>new</span><span class='period'>.</span><span class='id bencode'>bencode</span> <span class='comment'>#=&gt; &quot;d1:a1:a1:b1:be&quot;
 </span></pre>
 <h2>Note on Reporting Issues</h2>
@@ -250,7 +250,7 @@ Copyright &#169; 2010 blatyo. See LICENSE for details.
 </div></div>
     
     <div id="footer">
-  Generated on Tue Feb  2 11:26:15 2010 by 
+  Generated on Tue Feb  2 18:50:03 2010 by 
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool">yard</a>
   0.5.3 (ruby-1.9.1).
 </div>
