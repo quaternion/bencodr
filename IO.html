@@ -1,0 +1,530 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta name="Content-Type" content="text/html; charset=UTF-8" />
+<title>Class: IO</title>
+<link rel="stylesheet" href="css/style.css" type="text/css" media="screen" charset="utf-8" />
+<link rel="stylesheet" href="css/common.css" type="text/css" media="screen" charset="utf-8" />
+
+<script type="text/javascript" charset="utf-8">
+  relpath = '';
+  if (relpath != '') relpath += '/';
+</script>
+<script type="text/javascript" charset="utf-8" src="js/jquery.js"></script>
+<script type="text/javascript" charset="utf-8" src="js/app.js"></script>
+
+  </head>
+  <body>
+    <script type="text/javascript" charset="utf-8">
+      if (window.top.frames.main) document.body.className = 'frames';
+    </script>
+    
+    <div id="header">
+      <div id="menu">
+  
+    <a href="_index.html">Index (I)</a> &raquo; 
+    
+    
+    <span class="title">IO</span>
+  
+  
+  <div class="noframes"><span class="title">(</span><a href="." target="_top">no frames</a><span class="title">)</span></div>
+</div>
+
+      <div id="search">
+  <a id="class_list_link" href="#">Class List</a>
+  <a id="method_list_link" href="#">Method List</a>
+  <a id ="file_list_link" href="#">File List</a>
+</div>
+
+      <div class="clear"></div>
+    </div>
+    
+    <iframe id="search_frame"></iframe>
+    
+    <div id="content"><h1>Class: IO 
+  
+  
+</h1>
+
+<dl class="box">
+  
+    <dt class="r1">Inherits:</dt>
+    <dd class="r1">
+      <span class="inheritName">Object</span>
+      
+        <ul class="fullTree">
+          <li>Object</li>
+          
+            <li class="next">IO</li>
+          
+        </ul>
+        <a href="#" class="inheritanceTree">show all</a>
+      
+      </dd>
+    
+  
+  
+    
+  
+    
+  
+  
+    <dt class="r2 last">Defined in:</dt>
+    <dd class="r2 last">lib/bencodr/io.rb</dd>
+  
+</dl>
+<div class="clear"></div>
+
+
+
+
+  <h2>Class Method Summary</h2>
+
+  <ul class="summary">
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#bdecode-class_method" title="bdecode (class method)">+ (Object) <strong>bdecode</strong>(fd) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc">
+This method reads from the specified input and decodes the object.
+
+</span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#bencode-class_method" title="bencode (class method)">+ (Object) <strong>bencode</strong>(fd, object) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc">
+This method encodes the object and writes it to the specified output.
+
+</span>
+  
+</li>
+
+    
+  </ul>
+
+  <h2>Instance Method Summary</h2>
+
+  <ul class="summary">
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#bdecode-instance_method" title="#bdecode (instance method)">- (Object) <strong>bdecode</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc">
+This method reads from the specified input and decodes the object.
+
+</span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#bencode-instance_method" title="#bencode (instance method)">- (Object) <strong>bencode</strong>(object) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc">
+This method encodes the object and writes.
+
+</span>
+  
+</li>
+
+    
+  </ul>
+
+
+  <div id="class_method_details" class="method_details_list">
+    <h2>Class Method Details</h2>
+    
+    
+      <div class="method_details first">
+  <p class="signature first" id="bdecode-class_method">
+  
+    + (<tt>Object</tt>) <strong>bdecode</strong>(fd) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+This method reads from the specified input and decodes the object.
+</p>
+<pre class="code">
+  <span class='comment'># read from standard in
+</span>  <span class='const'>IO</span><span class='period'>.</span><span class='id bdecode'>bdecode</span><span class='lparen'>(</span><span class='int'>0</span><span class='rparen'>)</span>             <span class='comment'>#=&gt; &quot;string&quot;
+</span>
+  <span class='comment'># read from file
+</span>  <span class='const'>File</span><span class='period'>.</span><span class='id bdecode'>bdecode</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>a.bencode</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span> <span class='comment'>#=&gt; &quot;string&quot;
+</span></pre>
+
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Parameters:</h3>
+<ul class="param">
+  
+    <li>
+      
+        <span class='type'>(<tt>Object</tt>)</span>
+      
+      
+        <span class='name'>fd</span>
+      
+      
+      
+        &mdash;
+        
+the file descriptor to use for input
+
+
+      
+    </li>
+  
+    <li>
+      
+        <span class='type'>(<tt>Object</tt>)</span>
+      
+      
+        <span class='name'>object</span>
+      
+      
+      
+        &mdash;
+        
+the object to write
+
+
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+27
+28
+29</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/bencodr/io.rb', line 27</span>
+
+<span class='kw'>def</span> <span class='id bdecode'>bdecode</span><span class='lparen'>(</span><span class='id fd'>fd</span><span class='rparen'>)</span>
+  <span class='id open'>open</span><span class='lparen'>(</span><span class='id fd'>fd</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>rb</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span> <span class='lbrace'>{</span><span class='op'>|</span><span class='id file'>file</span><span class='op'>|</span> <span class='id file'>file</span><span class='period'>.</span><span class='id bdecode'>bdecode</span><span class='rbrace'>}</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="bencode-class_method">
+  
+    + (<tt>Object</tt>) <strong>bencode</strong>(fd, object) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+This method encodes the object and writes it to the specified output.
+</p>
+<pre class="code">
+  <span class='comment'># write to standard out
+</span>  <span class='const'>IO</span><span class='period'>.</span><span class='id bencode'>bencode</span><span class='lparen'>(</span><span class='int'>1</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>string</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>             <span class='comment'>#=&gt; &quot;6:string&quot; to stdout
+</span>
+  <span class='comment'># write to file
+</span>  <span class='const'>File</span><span class='period'>.</span><span class='id bencode'>bencode</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>a.bencode</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>string</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span> <span class='comment'>#=&gt; &quot;6:string&quot; to a.bencode
+</span></pre>
+
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Parameters:</h3>
+<ul class="param">
+  
+    <li>
+      
+        <span class='type'>(<tt>Object</tt>)</span>
+      
+      
+        <span class='name'>fd</span>
+      
+      
+      
+        &mdash;
+        
+the file descriptor to use for output
+
+
+      
+    </li>
+  
+    <li>
+      
+        <span class='type'>(<tt>Object</tt>)</span>
+      
+      
+        <span class='name'>object</span>
+      
+      
+      
+        &mdash;
+        
+the object to write
+
+
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+13
+14
+15</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/bencodr/io.rb', line 13</span>
+
+<span class='kw'>def</span> <span class='id bencode'>bencode</span><span class='lparen'>(</span><span class='id fd'>fd</span><span class='comma'>,</span> <span class='id object'>object</span><span class='rparen'>)</span>
+  <span class='id open'>open</span><span class='lparen'>(</span><span class='id fd'>fd</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>wb</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span> <span class='lbrace'>{</span><span class='op'>|</span><span class='id file'>file</span><span class='op'>|</span> <span class='id file'>file</span><span class='period'>.</span><span class='id bencode'>bencode</span> <span class='id object'>object</span> <span class='rbrace'>}</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+  <div id="instance_method_details" class="method_details_list">
+    <h2>Instance Method Details</h2>
+    
+    
+      <div class="method_details first">
+  <p class="signature first" id="bdecode-instance_method">
+  
+    - (<tt>Object</tt>) <strong>bdecode</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+This method reads from the specified input and decodes the object.
+</p>
+<pre class="code">
+  <span class='comment'># read from standard in
+</span>  <span class='gvar'>$stdin</span><span class='period'>.</span><span class='id bdecode'>bdecode</span>  <span class='comment'>#=&gt; &quot;string&quot;
+</span>
+  <span class='comment'># read from file
+</span>  <span class='id file'>file</span> <span class='op'>=</span> <span class='const'>File</span><span class='period'>.</span><span class='id open'>open</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>a.bencode</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>wb</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+  <span class='id file'>file</span><span class='period'>.</span><span class='id bdecode'>bdecode</span>    <span class='comment'>#=&gt; &quot;string&quot;
+</span></pre>
+
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Parameters:</h3>
+<ul class="param">
+  
+    <li>
+      
+        <span class='type'>(<tt>Object</tt>)</span>
+      
+      
+        <span class='name'>fd</span>
+      
+      
+      
+        &mdash;
+        
+the file descriptor to use for input
+
+
+      
+    </li>
+  
+    <li>
+      
+        <span class='type'>(<tt>Object</tt>)</span>
+      
+      
+        <span class='name'>object</span>
+      
+      
+      
+        &mdash;
+        
+the object to write
+
+
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+57
+58
+59</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/bencodr/io.rb', line 57</span>
+
+<span class='kw'>def</span> <span class='id bdecode'>bdecode</span>
+  <span class='id read'>read</span><span class='period'>.</span><span class='id bdecode'>bdecode</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="bencode-instance_method">
+  
+    - (<tt>Object</tt>) <strong>bencode</strong>(object) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+This method encodes the object and writes.
+</p>
+<pre class="code">
+  <span class='comment'># write to standard out
+</span>  <span class='gvar'>$stdout</span><span class='period'>.</span><span class='id bencode'>bencode</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>string</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span> <span class='comment'>#=&gt; &quot;6:string&quot; to stdout
+</span>
+  <span class='comment'># write to file
+</span>  <span class='id file'>file</span> <span class='op'>=</span> <span class='const'>File</span><span class='period'>.</span><span class='id open'>open</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>a.bencode</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>wb</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+  <span class='id file'>file</span><span class='period'>.</span><span class='id bencode'>bencode</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>string</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>    <span class='comment'>#=&gt; &quot;6:string&quot; to a.bencode
+</span></pre>
+
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Parameters:</h3>
+<ul class="param">
+  
+    <li>
+      
+        <span class='type'>(<tt>Object</tt>)</span>
+      
+      
+        <span class='name'>object</span>
+      
+      
+      
+        &mdash;
+        
+the object to write
+
+
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+42
+43
+44</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/bencodr/io.rb', line 42</span>
+
+<span class='kw'>def</span> <span class='id bencode'>bencode</span><span class='lparen'>(</span><span class='id object'>object</span><span class='rparen'>)</span>
+  <span class='id write'>write</span> <span class='id object'>object</span><span class='period'>.</span><span class='id bencode'>bencode</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+</div>
+    
+    <div id="footer">
+  Generated on Thu Feb  4 12:37:50 2010 by 
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool">yard</a>
+  0.5.3 (ruby-1.9.1).
+</div>
+
+  </body>
+</html>

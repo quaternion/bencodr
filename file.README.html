@@ -75,7 +75,7 @@ Torrent protocol.
 <h2>Installation</h2>
 <pre class="code">
     # install the gem
-    &gt; gem install bencodr
+    &gt; [sudo] gem install bencodr
     Successfully installed bencodr
     1 gem installed
     Installing ri documentation for bencodr...
@@ -156,16 +156,52 @@ alphanumerics) and are always strings.
     <span class='comment'># Note: keys are sorted as raw strings.
 </span>    <span class='lbrace'>{</span><span class='symbol'>:a</span> <span class='op'>=&gt;</span> <span class='int'>1</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>A</span><span class='tstring_end'>&quot;</span></span> <span class='op'>=&gt;</span> <span class='int'>1</span><span class='comma'>,</span> <span class='int'>1</span><span class='op'>=&gt;</span> <span class='int'>1</span><span class='rbrace'>}</span><span class='period'>.</span><span class='id bencode'>bencode</span>  <span class='comment'>#=&gt; &quot;d1:1i1e1:Ai1e1:ai1ee&quot;
 </span></pre>
-<h3>Encoding and Decoding</h3>
+<h3>Decoding</h3>
+<p>
+You can decode a bencoding by calling bdecode on the string.
+</p>
+<pre class="code">
+    <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>6:string</span><span class='tstring_end'>&quot;</span></span><span class='period'>.</span><span class='id bdecode'>bdecode</span>  <span class='comment'>#=&gt; &quot;string&quot;
+</span>    <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>i1e</span><span class='tstring_end'>&quot;</span></span><span class='period'>.</span><span class='id bdecode'>bdecode</span>       <span class='comment'>#=&gt; 1
+</span>    <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>le</span><span class='tstring_end'>&quot;</span></span><span class='period'>.</span><span class='id bdecode'>bdecode</span>        <span class='comment'>#=&gt; []
+</span>    <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>de</span><span class='tstring_end'>&quot;</span></span><span class='period'>.</span><span class='id bdecode'>bdecode</span>        <span class='comment'>#=&gt; {}
+</span></pre>
+<h3>IO and Files</h3>
+<p>
+You can also write and read bencodings.
+</p>
+<pre class="code">
+    <span class='comment'># write to standard out
+</span>    <span class='const'>IO</span><span class='period'>.</span><span class='id bencode'>bencode</span><span class='lparen'>(</span><span class='int'>1</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>string</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>             <span class='comment'>#=&gt; &quot;6:string&quot; to stdout
+</span>    <span class='gvar'>$stdout</span><span class='period'>.</span><span class='id bencode'>bencode</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>string</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>           <span class='comment'>#=&gt; &quot;6:string&quot; to stdout
+</span>
+    <span class='comment'># write to file
+</span>    <span class='const'>File</span><span class='period'>.</span><span class='id bencode'>bencode</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>a.bencode</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>string</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span> <span class='comment'>#=&gt; &quot;6:string&quot; to a.bencode
+</span>
+    <span class='id file'>file</span> <span class='op'>=</span> <span class='const'>File</span><span class='period'>.</span><span class='id open'>open</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>a.bencode</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>wb</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+    <span class='id file'>file</span><span class='period'>.</span><span class='id bencode'>bencode</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>string</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>              <span class='comment'>#=&gt; &quot;6:string&quot; to a.bencode
+</span>
+    <span class='comment'># read from standard in
+</span>    <span class='const'>IO</span><span class='period'>.</span><span class='id bdecode'>bdecode</span><span class='lparen'>(</span><span class='int'>0</span><span class='rparen'>)</span>                       <span class='comment'>#=&gt; &quot;string&quot;
+</span>    <span class='gvar'>$stdin</span><span class='period'>.</span><span class='id bdecode'>bdecode</span>                      <span class='comment'>#=&gt; &quot;string&quot;
+</span>
+    <span class='comment'># read from file
+</span>    <span class='const'>File</span><span class='period'>.</span><span class='id bdecode'>bdecode</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>a.bencode</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>           <span class='comment'>#=&gt; &quot;string&quot;
+</span>
+    <span class='id file'>file</span> <span class='op'>=</span> <span class='const'>File</span><span class='period'>.</span><span class='id open'>open</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>a.bencode</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>wb</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+    <span class='id file'>file</span><span class='period'>.</span><span class='id bdecode'>bdecode</span>                        <span class='comment'>#=&gt; &quot;string&quot;
+</span></pre>
+<h3>BEncodr</h3>
+<p>
+Most of the functionality of this library can also be accessed directly on
+the BEncodr class.
+</p>
 <pre class="code">
     <span class='comment'># encoding is just like calling bencode on the object
 </span>    <span class='const'>BEncodr</span><span class='period'>.</span><span class='id encode'>encode</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>string</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>    <span class='comment'>#=&gt; &quot;6:string&quot;
 </span>
-    <span class='comment'># decoding takes a string and return either a String, Integer, Array, or Hash
+    <span class='comment'># decoding is just like calling bdecode on a bencoding
 </span>    <span class='const'>BEncodr</span><span class='period'>.</span><span class='id decode'>decode</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>6:string</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>  <span class='comment'>#=&gt; &quot;string&quot;
-</span>    <span class='const'>BEncodr</span><span class='period'>.</span><span class='id decode'>decode</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>i1e</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>       <span class='comment'>#=&gt; 1
-</span>    <span class='const'>BEncodr</span><span class='period'>.</span><span class='id decode'>decode</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>le</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>        <span class='comment'>#=&gt; []
-</span>    <span class='const'>BEncodr</span><span class='period'>.</span><span class='id decode'>decode</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>de</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>        <span class='comment'>#=&gt; {}
 </span>
     <span class='comment'># you can work directly with files too
 </span>    <span class='const'>BEncodr</span><span class='period'>.</span><span class='id encode_file'>encode_file</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>my_awesome.torrent</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='lbrace'>{</span><span class='symbol'>:announce</span> <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>http://www.sometracker.com/announce:80</span><span class='tstring_end'>&quot;</span></span><span class='rbrace'>}</span><span class='rparen'>)</span>
@@ -245,12 +281,12 @@ I can ignore when I pull)
 </ul>
 <h2>Copyright</h2>
 <p>
-Copyright &#169; 2010 blatyo. See LICENSE for details.
+Copyright &#169; 2010 Allen Madsen. See LICENSE for details.
 </p>
 </div></div>
     
     <div id="footer">
-  Generated on Tue Feb  2 18:50:03 2010 by 
+  Generated on Thu Feb  4 12:37:50 2010 by 
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool">yard</a>
   0.5.3 (ruby-1.9.1).
 </div>
